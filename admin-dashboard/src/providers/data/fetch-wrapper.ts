@@ -6,7 +6,7 @@ type Error = {
 };
 
 const customFetch = async (url: string, options: RequestInit) => {
-    const accessToken = localStorage.getItem('acess_token');
+    const accessToken = localStorage.getItem('access_token');
 
     const headers = options.headers as Record<string, string>;
 
@@ -17,7 +17,7 @@ const customFetch = async (url: string, options: RequestInit) => {
             Authorization: headers?.Authorization || `Bearer ${accessToken}`,
             "Content-type": "application/json",
             "Apollo-Require-Preflight": "true",
-        },
+        }
     });
 };
 

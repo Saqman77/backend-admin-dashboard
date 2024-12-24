@@ -25,7 +25,7 @@ export const wsClient = typeof window !== "undefined"
     ? createClient({
         url: WS_URL,
         connectionParams: () => {
-            const accessToken = localStorage.getItem("acess_token");
+            const accessToken = localStorage.getItem("access_token");
 
             return {
                 headers: {

@@ -19,11 +19,7 @@ import routerBindings, {
   UnsavedChangesNotifier,
 } from "@refinedev/react-router";
 import { App as AntdApp } from "antd";
-import { createClient } from "graphql-ws";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router";
-// import { authProvider } from "./authProvider";
-// import { Header } from "./components/header";
-// import { ColorModeContextProvider } from "./contexts/color-mode";
 import {
   BlogPostCreate,
   BlogPostEdit,
@@ -51,7 +47,6 @@ function App() {
     <BrowserRouter>
       <GitHubBanner />
       <RefineKbarProvider>
-        {/* <ColorModeContextProvider> */}
           <AntdApp>
             <DevtoolsProvider>
               <Refine
@@ -150,7 +145,6 @@ function App() {
               <DevtoolsPanel />
             </DevtoolsProvider>
           </AntdApp>
-        {/* </ColorModeContextProvider> */}
       </RefineKbarProvider>
     </BrowserRouter>
   );
