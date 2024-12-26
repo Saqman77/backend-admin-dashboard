@@ -15,17 +15,17 @@ const customFetch = async (url: string, options: RequestInit) => {
         headers:{
             ...headers,
             Authorization: headers?.Authorization || `Bearer ${accessToken}`,
-            "Content-type": "application/json",
+            "Content-Type": "application/json",
             "Apollo-Require-Preflight": "true",
         }
     });
 };
 
-const getGraphQLErrors = (body: Record<"errors", GraphQLFormattedError[] | undefined>) : Error | null => {
+const getGraphQLErrors = (body: Record<"errors", GraphQLFormattedError[] | undefined>,): Error | null => {
     if(!body){
         return{
             message: "Unknown error",
-            statusCode: "INTERNAL_SERVER_ERROR"
+            statusCode: "INTERNAL_SERVER_ERROR",
         };
     };
 
@@ -37,7 +37,7 @@ const getGraphQLErrors = (body: Record<"errors", GraphQLFormattedError[] | undef
 
         return {
             message: messages || JSON.stringify(errors),
-            statusCode: code || 500
+            statusCode: code || 500,
         };
     };
 
