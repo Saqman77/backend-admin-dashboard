@@ -161,8 +161,9 @@ export const AccountSettings = ({ opened, setOpened, userId }: Props) => {
           <SaveButton
             {...saveButtonProps}
             style={{
-              display: "block",
+              display: "flex",
               marginLeft: "auto",
+              alignItems: 'center'
             }}
           />
         </Card>
