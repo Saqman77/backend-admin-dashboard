@@ -11,7 +11,7 @@ import {
 import "@refinedev/antd/dist/reset.css";
 
 import {authProvider, dataProvider, liveProvider} from "./providers";
-import { Home, ForgotPassword, Login, Register } from "./pages"
+import { Home, ForgotPassword, Login, Register, CompanyList } from "./pages"
 
 import routerBindings, {
   CatchAllNavigate,
@@ -23,27 +23,8 @@ import { App as AntdApp } from "antd";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router";
 import Layout from "./components/layout";
 import { resources } from "./config/resources";
-// import {
-//   BlogPostCreate,
-//   BlogPostEdit,
-//   BlogPostList,
-//   BlogPostShow,
-// } from "./pages/blog-posts";
-// import {
-//   CategoryCreate,
-//   CategoryEdit,
-//   CategoryList,
-//   CategoryShow,
-// } from "./pages/categories";
-// import { ForgotPassword } from "./pages/forgotPassword";
-// import { Login } from "./pages/login";
-// import { Register } from "./pages/register";
-
-// const API_URL = "https://api.nestjs-query.refine.dev/graphql";
-// const WS_URL = "wss://api.nestjs-query.refine.dev/graphql";
-
-// const gqlClient = new GraphQLClient(API_URL);
-// const wsClient = createClient({ url: WS_URL });
+import Create from "./pages/company/create";
+import EditPage from "./pages/company/edit";
 
 function App() {
   return (
@@ -83,6 +64,11 @@ function App() {
                   </Authenticated>
                   }>
                     <Route index element={<Home />} />
+                    <Route path="/companies">
+                      <Route index element={<CompanyList />}/>
+                      <Route path="new" element={<Create />}/>
+                      <Route path="edit/:id" element={<EditPage />}/>
+                    </Route>
                   </Route>
                 </Routes>
                 <RefineKbar />
