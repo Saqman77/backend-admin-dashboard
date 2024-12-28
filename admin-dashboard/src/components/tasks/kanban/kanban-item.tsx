@@ -6,10 +6,7 @@ interface Props  {
 }
 
 const KanbanItem = ({children, data, id}: React.PropsWithChildren<Props>) => {
-    const {attributes, listeners, setNodeRef, active } = useDraggable({
-        id:'',
-        data:'data'
-    })
+    const {attributes, listeners, setNodeRef, active } = useDraggable({id, data })
   return (
     <div
     style={{

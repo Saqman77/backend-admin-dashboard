@@ -3,11 +3,13 @@ import KanbanColumn from '@/components/tasks/kanban/column'
 import KanbanItem from '@/components/tasks/kanban/kanban-item'
 import { TASK_STAGES_QUERY, TASKS_QUERY } from '@/graphql/queries'
 import { TaskStage } from '@/graphql/schema.types'
+import { TasksQuery } from '@/graphql/types'
 import { useList } from '@refinedev/core'
+import { GetFieldsFromList } from '@refinedev/nestjs-query'
 import React from 'react'
 
 const List = () => {
-    const { data: stages, isLoading: isLoadingStages} = useList({
+    const { data: stages, isLoading: isLoadingStages} = useList<TaskStage>({
         resource:'taskStages',
         filters:[
             {
@@ -24,7 +26,7 @@ const List = () => {
             gqlQuery: TASK_STAGES_QUERY
         }
     })
-    const { data: tasks, isLoading: isLoadingTasks} = useList({
+    const { data: tasks, isLoading: isLoadingTasks} = useList<GetFieldsFromList<TasksQuery>>({
         resource: 'tasks',
         sorters: [
             {
@@ -54,21 +56,27 @@ const List = () => {
         const unnassignedStage = tasks.data.filter((task) => task.stageId === null)
         const grouped: TaskStage[] = stages.data.map((stage) => ({
             ...stage,
-            tasks: tasks.data.filter((task) => task.stageId?.toString)
+            tasks: tasks.data.filter((task) => task.stageId?.toString() === stage.id)
         }))
+
+        return{
+            unnassignedStage,
+            columns: grouped
+        }
     }, [stages, tasks])
+
+    const handleAddCard = (args: {stageId: string}) => {}
 
   return (
     <>
     <KanbanBoardContainer>
         <KanbanBoard>
-            <KanbanColumn>
-                <KanbanItem>
-                    this is your mom
-                </KanbanItem>
-            </KanbanColumn>
-            <KanbanColumn>
-
+            <KanbanColumn id="unnassigned" title={"unnassigned"} count={taskStages.unnassignedStage.length || 0} onAddClick={() => handleAddCard({ stageId: 'unnassigned'})}>
+                {taskStages.unnassignedStage.map((task) => (
+                    <KanbanItem key={task.id} id={task.id} data={{...task, stageId: 'unnassigned'}} >
+                        {task.title}
+                    </KanbanItem>
+                ))}
             </KanbanColumn>
         </KanbanBoard>
     </KanbanBoardContainer>
