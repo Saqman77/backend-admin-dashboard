@@ -57,7 +57,7 @@ const EditPage = () => {
                     }
                     />
                 </Form.Item>
-                <Form.Item>
+                <Form.Item label="Company size">
                     <Select options={companySizeOptions}/>
                 </Form.Item>
                 <Form.Item>
