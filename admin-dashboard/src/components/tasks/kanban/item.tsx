@@ -18,7 +18,7 @@ const KanbanItem = ({children, data, id}: React.PropsWithChildren<Props>) => {
         {...attributes}
         {...listeners}
         style={{
-            opacity: active? (active.id === id ? 1 : 0.5) : 1,
+            opacity: active ? (active.id === id ? 1 : 0.5) : 1,
             borderRadius: '8px',
             position: 'relative',
             cursor: 'grab'
