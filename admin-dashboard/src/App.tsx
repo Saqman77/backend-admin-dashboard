@@ -32,10 +32,8 @@ import TasksEditPage from "./pages/tasks/edit";
 function App() {
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
           <AntdApp>
-            <DevtoolsProvider>
               <Refine
                 dataProvider={dataProvider}
                 liveProvider={liveProvider}
@@ -85,8 +83,6 @@ function App() {
                 <UnsavedChangesNotifier />
                 <DocumentTitleHandler />
               </Refine>
-              <DevtoolsPanel />
-            </DevtoolsProvider>
           </AntdApp>
       </RefineKbarProvider>
     </BrowserRouter>

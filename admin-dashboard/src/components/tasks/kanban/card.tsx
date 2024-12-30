@@ -101,6 +101,8 @@ const ProjectCard = ({id, title, dueDate, users}: ProjectCardProps) => {
                 trigger={["click"]}
                 menu={{
                     items: dropdownItems,
+                    onPointerDown: (e) => {e.stopPropagation()},
+                    onClick: (e) => {e.domEvent.stopPropagation()}
                 }}
                 placement="bottom"
                 arrow={{pointAtCenter: true}}
