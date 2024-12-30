@@ -27,6 +27,7 @@ import Create from "./pages/company/create";
 import EditPage from "./pages/company/edit";
 import List from "./pages/tasks/list";
 import CreateTask from "./pages/tasks/create";
+import TasksEditPage from "./pages/tasks/edit";
 
 function App() {
   return (
@@ -76,7 +77,7 @@ function App() {
                         <Outlet/>
                     </List>}>
                     <Route path="new" element={<CreateTask />}/>
-                    <Route path="new" element={<EditPage />}/>
+                    <Route path="edit/:id" element={<TasksEditPage />}/>
                     </Route>
                   </Route>
                 </Routes>

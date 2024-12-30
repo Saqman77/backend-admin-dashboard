@@ -64,7 +64,7 @@ const List = ({children}: React.PropsWithChildren) => {
         }
 
         const unnasignedStage = tasks.data.filter((task) => task.stageId === null)
-        const grouped: TaskStage[] = stages.data.map((stage) => ({
+        const grouped = stages.data.map((stage) => ({
             ...stage,
             tasks: tasks.data.filter((task) => task.stageId?.toString() === stage.id)
         }))

@@ -95,7 +95,7 @@ const ProjectCard = ({id, title, dueDate, users}: ProjectCardProps) => {
                 backgroundColor: 'aliceblue',
             }}
             title={<Text ellipsis={{ tooltip: title}}>{title}</Text>}
-            onClick={() => edit()}
+            onClick={() => edit('tasks', id, 'replace')}
             extra={
                 <Dropdown
                 trigger={["click"]}

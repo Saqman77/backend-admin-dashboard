@@ -4,10 +4,14 @@ import { Typography, Space, Tag } from "antd";
 
 import dayjs from "dayjs";
 
-import { Text, UserTag } from "@/components";
-import { getDateColor } from "@/utilities";
-
+// import { Text, UserTag } from "@/components";
+// import { getDateColor } from "@/utilities";
 import { Task } from "@/graphql/schema.types";
+import { getDateColor } from "@/utilities";
+import { Text } from "@/components/text";
+import { UserTag } from "@/components/tags/user-tag";
+
+// import { Task } from "@/graphql/schema.types";
 
 type DescriptionProps = {
   description?: Task["description"];
@@ -22,7 +26,7 @@ type UserProps = {
 };
 
 // display a task's descriptio if it exists, otherwise display a link to add one
-export const DescriptionHeader = ({ description }: DescriptionProps) => {
+ export const DescriptionHeader = ({ description }: DescriptionProps) => {
   if (description) {
     return (
       <Typography.Paragraph ellipsis={{ rows: 8 }}>
@@ -36,7 +40,7 @@ export const DescriptionHeader = ({ description }: DescriptionProps) => {
 };
 
 // display a task's due date if it exists, otherwise display a link to add one
-export const DueDateHeader = ({ dueData }: DueDateProps) => {
+ export const DueDateHeader = ({ dueData }: DueDateProps) => {
   if (dueData) {
     // get the color of the due date
     const color = getDateColor({
@@ -71,7 +75,7 @@ export const DueDateHeader = ({ dueData }: DueDateProps) => {
 };
 
 // display a task's users if it exists, otherwise display a link to add one
-export const UsersHeader = ({ users = [] }: UserProps) => {
+ export const UsersHeader = ({ users = [] }: UserProps) => {
   if (users.length > 0) {
     return (
       <Space size={[0, 8]} wrap>
@@ -85,3 +89,7 @@ export const UsersHeader = ({ users = [] }: UserProps) => {
   // if the task doesn't have users, display a link to add one
   return <Typography.Link>Assign to users</Typography.Link>;
 };
+
+// export default {DescriptionHeader, DueDateHeader, UsersHeader};
+// export default DueDateHeader;
+// export default UsersHeader;
