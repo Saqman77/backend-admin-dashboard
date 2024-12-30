@@ -44,7 +44,7 @@ const KanbanColumn = ({
             </Space>
             {description}
         </div>
-        <div style={{ flex: '1', overflowY: active ? 'unset' : 'scroll', border: '2px dashed transparent', borderColor: isOver ? '#000040' : 'transparent', borderRadius:'4px' }} >
+        <div style={{ flex: '1', overflowY: active ? 'unset' : 'auto', border: '2px dashed transparent', borderColor: isOver ? '#000040' : 'transparent', borderRadius:'4px' }} >
             <div
                 style={{
                     marginTop:'12px',
