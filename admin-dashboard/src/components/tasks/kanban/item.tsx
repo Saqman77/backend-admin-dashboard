@@ -10,7 +10,8 @@ const KanbanItem = ({children, id, data}: React.PropsWithChildren<Props>) => {
   return (
     <div
     style={{
-        position:'relative'
+        position:'relative',
+        
     }}
     >
         <div
@@ -21,7 +22,9 @@ const KanbanItem = ({children, id, data}: React.PropsWithChildren<Props>) => {
             opacity: active ? (active.id === id ? 1 : 0.5) : 1,
             borderRadius: '8px',
             position: 'relative',
-            cursor: 'grab'
+            cursor: 'grab',
+            
+            // boxShadow: active?.id === id ? 'none' : '-4px 10px 33px 7px rgba(0,0,0,0.6) inset', 
         }}
         >
             {active?.id === id && (
@@ -29,7 +32,7 @@ const KanbanItem = ({children, id, data}: React.PropsWithChildren<Props>) => {
                     <div style={
                         { 
                             borderRadius: '8px',
-                            boxShadow:'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px',
+                            boxShadow:'8px 8px 24px 0px rgba(66, 68, 90, 1)',
                             cursor: 'grabbing'
                         }}>
                             {children}

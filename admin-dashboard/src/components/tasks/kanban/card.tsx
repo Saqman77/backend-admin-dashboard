@@ -91,6 +91,9 @@ const ProjectCard = ({id, title, dueDate, users}: ProjectCardProps) => {
     >
         <Card 
             size="small"
+            style={{
+                backgroundColor: 'aliceblue',
+            }}
             title={<Text ellipsis={{ tooltip: title}}>{title}</Text>}
             onClick={() => edit()}
             extra={

@@ -8,6 +8,7 @@ import ProjectCardSkeleton from "./skeleton/project-card";
 import DashboardTotalCountCard from "./home/total-count-card";
 import LatestActivities from "./home/latest-activities";
 
+
 export { 
     DealsChart,
     UpcomingEvents,
@@ -21,3 +22,10 @@ export {
     DashboardTotalCountCard,
     LatestActivities
  }
+
+ export * from "./tasks/form/description";
+export * from "./tasks/form/due-date";
+export * from "./tasks/form/header";
+export * from "./tasks/form/title";
+export * from "./tasks/form/users";
+export * from "./tasks/form/stage";
