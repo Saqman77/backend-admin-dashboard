@@ -1,4 +1,5 @@
 import { KanbanBoard, KanbanBoardContainer } from '@/components/tasks/kanban/board'
+import ProjectCard from '@/components/tasks/kanban/card'
 import KanbanColumn from '@/components/tasks/kanban/column'
 import KanbanItem from '@/components/tasks/kanban/item'
 import { TASK_STAGES_QUERY, TASKS_QUERY } from '@/graphql/queries'
@@ -44,37 +45,39 @@ const List = () => {
             gqlQuery: TASKS_QUERY
         }
     })
-
+        
     const taskStages = React.useMemo(() => {
         if (!tasks?.data || !stages?.data){
             return {
-                unnassignedStage: [],
+                unnasignedStage: [],
                 stages: []
             }
         }
 
-        const unnassignedStage = tasks.data.filter((task) => task.stageId === null)
+        const unnasignedStage = tasks.data.filter((task) => task.stageId === null)
         const grouped: TaskStage[] = stages.data.map((stage) => ({
             ...stage,
             tasks: tasks.data.filter((task) => task.stageId?.toString() === stage.id)
         }))
 
         return{
-            unnassignedStage,
+            unnasignedStage,
             columns: grouped
         }
     }, [stages, tasks])
-
+    
     const handleAddCard = (args: {stageId: string}) => {}
 
   return (
     <>
     <KanbanBoardContainer>
         <KanbanBoard>
-            <KanbanColumn id="unnassigned" title={"unnassigned"} count={taskStages.unnassignedStage.length || 0} onAddClick={() => handleAddCard({ stageId: 'unnassigned'})}>
-                {taskStages.unnassignedStage.map((task) => (
-                    <KanbanItem key={task.id} id={task.id} data={{...task, stageId: 'unnassigned'}} >
-                        {task.title}
+            <KanbanColumn id="unnasigned" title={"unassigned"} count={taskStages.unnasignedStage.length || 0} onAddClick={() => handleAddCard({ stageId: 'unnasigned'})}>
+                {taskStages.unnasignedStage.map((task) => (
+                    <KanbanItem key={task.id} id={task.id} data={{...task, stageId: 'unnasigned'}} >
+                        <ProjectCard {...task} dueDate={task.dueDate || undefined}>
+
+                        </ProjectCard>
                     </KanbanItem>
                 ))}
             </KanbanColumn>

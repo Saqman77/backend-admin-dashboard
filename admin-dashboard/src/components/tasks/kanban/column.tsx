@@ -38,13 +38,13 @@ const KanbanColumn = ({
                     <Text strong ellipsis={{tooltip: title}} size='xs'  style={{ textTransform:'uppercase', whiteSpace:'nowrap' }}>
                         {title}
                     </Text>
-                    {!!count && <Badge count={count} color='cyan' />}
+                    {!!count && <Badge count={count} color='cyan' showZero/>}
                 </Space>
                 <Button shape='circle' icon={<PlusOutlined/>} onClick={onAddClickHandler}/>
             </Space>
             {description}
         </div>
-        <div style={{ flex: '1', overflowY: active? 'unset':'scroll', border: '2px dashed transparent', borderColor: isOver? '#000040' : 'transparent', borderRadius:'4px' }} >
+        <div style={{ flex: '1', overflowY: active ? 'unset' : 'scroll', border: '2px dashed transparent', borderColor: isOver ? '#000040' : 'transparent', borderRadius:'4px' }} >
             <div
                 style={{
                     marginTop:'12px',
