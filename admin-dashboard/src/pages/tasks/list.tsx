@@ -1,6 +1,6 @@
 import { KanbanBoard, KanbanBoardContainer } from '@/components/tasks/kanban/board'
 import KanbanColumn from '@/components/tasks/kanban/column'
-import KanbanItem from '@/components/tasks/kanban/kanban-item'
+import KanbanItem from '@/components/tasks/kanban/item'
 import { TASK_STAGES_QUERY, TASKS_QUERY } from '@/graphql/queries'
 import { TaskStage } from '@/graphql/schema.types'
 import { TasksQuery } from '@/graphql/types'
